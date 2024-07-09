@@ -6,9 +6,9 @@ A moderately alright config for my home directory. Maybe.
 For now this repo is cloned over home, or to a directory like `Documents/dots` and symlinked as needed:
 
 ```fish
-ln -s $PWD/.config/git ~/.config/git
 ln -s $PWD/.config/fish/conf.d ~/.config/fish/conf.d
 ln -s $PWD/.config/fish/themes ~/.config/fish/themes
+ln -s $PWD/.config/git ~/.config/git
 ln -s $PWD/.config/htop ~/.config/htop
 ln -s $PWD/.config/tmux ~/.config/tmux
 ```
