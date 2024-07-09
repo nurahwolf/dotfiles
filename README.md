@@ -25,3 +25,7 @@ fish_config theme save "Catppuccin Frappe"
 fish_config theme save "Catppuccin Macchiato"
 fish_config theme save "Catppuccin Mocha"
 ```
+
+
+
+>\>:3
