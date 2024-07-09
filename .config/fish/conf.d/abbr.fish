@@ -12,6 +12,7 @@ if not status is-interactive
 end
 
 # 'utility' tweaks:
+abbr -a 'print_path' 'echo -e $PATH//:/\\n'   # Print each PATH entry on a separate line
 abbr -a 'tb'	'nc termbin.com 9999' # Upload stuff to termbin.com, requires netcat
 
 # 'ls' tweaks:
