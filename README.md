@@ -27,4 +27,4 @@ fish_config theme save "Catppuccin Mocha"
 
 
 
->>:3
+>\>:3
