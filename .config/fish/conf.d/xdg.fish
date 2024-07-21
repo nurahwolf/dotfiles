@@ -23,4 +23,10 @@ set -U STARSHIP_CACHE       "$XDG_CACHE_HOME/starship"
 set -U STARSHIP_CONFIG      "$XDG_CONFIG_HOME/starship.toml"
 set -U VSCODE_EXTENSIONS    "$XDG_DATA_HOME/vscode/extensions"
 set -U WGETRC               "$XDG_CONFIG_HOME/wgetrc"
-set -U XAUTHORITY           "$XDG_RUNTIME_DIR/Xauthority"
+set -U XAUTHORITY			"$XDG_RUNTIME_DIR/Xauthority"
+set -U VSCODE_PORTABLE		"$XDG_DATA_HOME/vscode"
+
+# Alias for pesky programs
+if type -q code
+    abbr -a 'cdde'	'code --extensions-dir "$XDG_DATA_HOME/vscode"'
+end
