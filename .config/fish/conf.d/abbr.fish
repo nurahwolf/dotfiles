@@ -1,8 +1,8 @@
-#┌──────────────┬─────────────────┬─────────┐
-#│ Version      │ Last Modified   │ Manager │
-#├──────────────┼─────────────────┼─────────┤
-#│ 0.0.1        │ 2024-07-09      │ Git     │
-#└──────────────┴─────────────────┴─────────┘
+#┌──────────┬───────────────────┬───────────┐
+#│ Version	│	Last Modified	│	Manager	│
+#├──────────┼───────────────────┼───────────┤
+#│ 0.0.1	│	2024-07-09		│	Git		│
+#└──────────┴───────────────────┴───────────┘
 
 # Don't set these up if we are not in an interactive session.
 # Sure, abbr is safe to use non-interactive, but this does save a few cycles where its not needed.
