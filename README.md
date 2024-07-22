@@ -25,3 +25,12 @@ fish_config theme save "Catppuccin Frappe"
 fish_config theme save "Catppuccin Macchiato"
 fish_config theme save "Catppuccin Mocha"
 ```
+
+#### Tracking Issues
+
+A list of issues or pull requests that impact this repo
+
+- iterm2 and starship
+	- [Shell integration is messed up with starship prompt](https://gitlab.com/gnachman/iterm2/-/issues/10537#note_1069174232)
+	- [Add support for semantic prompts specification](https://github.com/starship/starship/issues/5463)
+	- [feat(module): added iterm2_mark module](https://github.com/starship/starship/pull/3018)

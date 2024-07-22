@@ -23,6 +23,19 @@
 # Enable iTerm2 shell integration with tmux
 export ITERM_ENABLE_SHELL_INTEGRATION_WITH_TMUX=YES
 
+# Source starship first if available, as iterm will override a few bits if applicable
+if type -q starship
+	starship init fish | source
+end
+
+if type -q zoxide
+	zoxide init --cmd cd fish | source
+end
+
+if test -d /opt/homebrew/bin
+	fish_add_path /opt/homebrew/bin
+end
+
 if begin
 	status --is-interactive;
 	and not functions -q -- iterm2_status;
@@ -69,8 +82,8 @@ end
 	# Function to write remote host and current directory user variables
 	function iterm2_write_remotehost_currentdir_uservars
 		# If hostname is cached, use that
-		if set -q -g iterm2_hostname
-			printf "\033]1337;RemoteHost=%s@%s\007\033]1337;CurrentDir=%s\007" $USER $iterm2_hostname $PWD
+		if set -q -g ITERM2_HOSTNAME
+			printf "\033]1337;RemoteHost=%s@%s\007\033]1337;CurrentDir=%s\007" $USER $ITERM2_HOSTNAME $PWD
 		else
 			if type -q hostnamectl
 				printf "\033]1337;RemoteHost=%s@%s\007\033]1337;CurrentDir=%s\007" $USER (hostnamectl hostname --pretty) $PWD
@@ -138,11 +151,11 @@ end
 	end
 
 	# Cache hostname if hostnamectl is not available, and not on Darwin (they can be slow)
-	if not type -q hostnamectl; and test (uname) != "Darwin"; and not set -q -g iterm2_hostname
-		set -g iterm2_hostname (hostname -f 2>/dev/null)
+	if not type -q hostnamectl; and test (uname) != "Darwin";
+		set -g ITERM2_HOSTNAME (hostname -f 2>/dev/null)
 		# some flavors of BSD (i.e. NetBSD and OpenBSD) don't have the -f option
 		if test $status -ne 0
-			set -g iterm2_hostname (hostname)
+			set -g ITERM2_HOSTNAME (hostname)
 		end
 	end
 
