@@ -38,14 +38,14 @@ set snapshots \
 
 # Create and send root snapshot
 if test -e /mnt/"$current_date"_"$SNAPSHOT_PREFIX"
-    echo "$COLOUR_YELLOW [X]: Snapshot "$current_date"_"$SNAPSHOT_PREFIX" already exists. Skipping creation."
+    echo "$COLOUR_YELLOW [X]: Snapshot "$current_date"_"$SNAPSHOT_PREFIX" already exists. Skipping creation. $COLOUR_RESET"
 else
 	# Create the read-only snapshot if it doesn't exist
 	btrfs subvolume snapshot -r / /mnt/"$current_date"_"$SNAPSHOT_PREFIX"
 
 	# Ensure it was created successfully, otherwise exit
 	if test $status -ne 0
-		echo "$COLOUR_RED [X]: Failed to create snapshot for "$current_date"_"$SNAPSHOT_PREFIX""
+		echo "$COLOUR_RED [X]: Failed to create snapshot for "$current_date"_"$SNAPSHOT_PREFIX" $COLOUR_RESET"
 		exit 1
 	end
 
@@ -54,11 +54,11 @@ else
 
         # Ensure that the snapshot was sent successfully
         if test $status -ne 0
-            echo "$COLOUR_RED [X]: Failed to send snapshot "$current_date"_"$SNAPSHOT_PREFIX""
+            echo "$COLOUR_RED [X]: Failed to send snapshot "$current_date"_"$SNAPSHOT_PREFIX" $COLOUR_RESET"
             exit 1
         end
 
-        echo "$COLOUR_GREEN [✓]: Snapshot "$current_date"_"$SNAPSHOT_PREFIX" has been sent!"
+        echo "$COLOUR_GREEN [✓]: Snapshot "$current_date"_"$SNAPSHOT_PREFIX" has been sent! $COLOUR_RESET"
 end
 
 # Loop through each snapshot
@@ -72,14 +72,14 @@ for snapshot in $snapshots
 
     # Check if the snapshot already exists
     if test -e $target_snapshot
-        echo "$COLOUR_YELLOW [X]: Snapshot "$current_date"_"$SNAPSHOT_PREFIX"_$snapshot_name already exists. Skipping creation."
+        echo "$COLOUR_YELLOW [X]: Snapshot "$current_date"_"$SNAPSHOT_PREFIX"_$snapshot_name already exists. Skipping creation. $COLOUR_RESET"
     else
         # Create the read-only snapshot if it doesn't exist
         btrfs subvolume snapshot -r $snapshot_path $target_snapshot
 
         # Ensure it was created successfully, otherwise exit
         if test $status -ne 0
-            echo "$COLOUR_RED [X]: Failed to create snapshot for $snapshot_path"
+            echo "$COLOUR_RED [X]: Failed to create snapshot for $snapshot_path $COLOUR_RESET"
             exit 1
         end
 
@@ -88,10 +88,10 @@ for snapshot in $snapshots
 
         # Ensure that the snapshot was sent successfully
         if test $status -ne 0
-            echo "$COLOUR_RED [X]: Failed to send snapshot $snapshot_path"
+            echo "$COLOUR_RED [X]: Failed to send snapshot $snapshot_path $COLOUR_RESET"
             exit 1
         end
 
-        echo "$COLOUR_GREEN [✓]: Snapshot "$current_date"_"$SNAPSHOT_PREFIX"_$snapshot_name has been sent!"
+        echo "$COLOUR_GREEN [✓]: Snapshot "$current_date"_"$SNAPSHOT_PREFIX"_$snapshot_name has been sent! $COLOUR_RESET"
     end
 end
