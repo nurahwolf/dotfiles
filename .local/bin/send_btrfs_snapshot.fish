@@ -1,13 +1,19 @@
 #!/usr/bin/env fish
-set SNAPSHOT_PREFIX "MATRIX.WOLFO.TECH" # A custom snapshot prefix
-set TARGET "luro.lunar.cloud" # The target to send snapshots to
-set TARGET_PATH "/run/media/system/Lead/.snapshots" # The target path to send snapshots to
+set LOCAL_PATH "/.snapshots" # The local path where snapshots live
+set SNAPSHOT_PREFIX "SECURESERVER.NASA.LOCAL" # A custom snapshot prefix
+set TARGET "MAINFRAME.nasa.local" # The target to send snapshots to
+set TARGET_PATH "/run/media/system/BIGSTORAGE" # The target path to send snapshots to
 
 # Colours
 set COLOUR_GREEN (set_color green)
 set COLOUR_RED (set_color red)
 set COLOUR_YELLOW (set_color yellow)
 set COLOUR_RESET (set_color normal)
+
+# Define an alphabetically sorted array of snapshot names and their paths
+set snapshots \
+    "ROOT:/root" \
+    "HOME:/home"
 
 # Check if the correct number of arguments are passed
 if test (count $argv) -lt 2
@@ -23,18 +29,6 @@ set previous_date $argv[2]
 if test (count $argv) -ge 3
     set SNAPSHOT_PREFIX $argv[3]
 end
-
-# Define an alphabetically sorted array of snapshot names and their paths
-set snapshots \
-    "ROOT:/root" \
-    "HOME:/home" \
-    "MATRIX:/matrix" \
-    "MATRIX-POSTGRES:/matrix/postgres" \
-    "OPT:/opt" \
-    "SRV:/srv" \
-    "USR-LOCAL:/usr/local" \
-    "VAR:/var" \
-    "VAR-LOG:/var/log"
 
 # Create and send root snapshot
 if test -e /mnt/"$current_date"_"$SNAPSHOT_PREFIX"
