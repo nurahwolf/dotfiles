@@ -34,3 +34,8 @@ A list of issues or pull requests that impact this repo
 	- [Shell integration is messed up with starship prompt](https://gitlab.com/gnachman/iterm2/-/issues/10537#note_1069174232)
 	- [Add support for semantic prompts specification](https://github.com/starship/starship/issues/5463)
 	- [feat(module): added iterm2_mark module](https://github.com/starship/starship/pull/3018)
+
+#### Resources
+
+A list of references / resources / credits
+- [A list of XDG fixes for troublesome programs](https://wiki.archlinux.org/title/XDG_Base_Directory#Support)
