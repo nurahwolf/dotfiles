@@ -25,6 +25,7 @@ set -U VSCODE_EXTENSIONS    "$XDG_DATA_HOME/vscode/extensions"
 set -U WGETRC               "$XDG_CONFIG_HOME/wgetrc"
 set -U XAUTHORITY			"$XDG_RUNTIME_DIR/Xauthority"
 set -U VSCODE_PORTABLE		"$XDG_DATA_HOME/vscode"
+set -U OLLAMA_MODELS		"$XDG_DATA_HOME/ollama/models"
 
 # Alias for pesky programs
 if type -q code
