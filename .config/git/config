@@ -1,3 +1,5 @@
 [user]
-name = Nurah Wolfo
-email = nurah@wolfo.tech
+	name = Nurah Wolfo
+	email = nurah@wolfo.tech
+[pull]
+	rebase = true

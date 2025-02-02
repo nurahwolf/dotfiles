@@ -12,5 +12,6 @@
 !.config/fish
 !.config/fish/conf.d
 !.config/fish/themes
+!.config/git
 !.local
 !.local/bin/
