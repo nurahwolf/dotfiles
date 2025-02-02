@@ -1,1 +1,6 @@
-.DS_Store
+# Default ignore all
+/*
+/*/
+
+# Except following allow list
+!/.config/fish/
