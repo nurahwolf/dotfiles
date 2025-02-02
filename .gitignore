@@ -1,6 +1,16 @@
-# Default ignore all
+# Default Ignore All
 /*
 /*/
 
-# Except following allow list
-!/.config/fish/
+# Explicit Deny
+.config/*
+.config/fish/*
+.local/*
+
+# Explicit Allow
+!.config
+!.config/fish
+!.config/fish/conf.d
+!.config/fish/themes
+!.local
+!.local/bin/
