@@ -1,6 +1,17 @@
 # dotfiles
 A moderately alright config for my home directory. Maybe.
 
+### Usage
+
+These dotfiles are supposed to be 'generic', in that they are not managed by any particular home manager solution.
+This means that at time of writing, there are two intended 'usages' for this repository:
+
+- Good old fashioned `ln -s` to symlink this repo to the 'end' directory
+- Literally cloning over top of `/home/<user>`, and treating `$HOME` as a git directory
+- Used as part of 'templating'. e.g. `/etc/skel` to create a new user, or part of a `mkosi` configuration
+
+See [Moshi - An Arch Linux based mkosi configuration](https://github.com/nurahwolf/moshi) for more information on the latter.
+
 #### Linking
 
 For now this repo is cloned over home, or to a directory like `Documents/dots` and symlinked as needed:
