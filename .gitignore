@@ -13,5 +13,7 @@
 !.config/fish/conf.d
 !.config/fish/themes
 !.config/git
+!.config/discord
+!.config/discord/settings.json
 !.local
 !.local/bin/
