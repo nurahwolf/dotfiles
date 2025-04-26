@@ -1,0 +1,50 @@
+#!/usr/bin/fish
+
+argparse 'w/width=' 'h/height=' 'b/bpp=' 'e/help' -- $argv
+or return
+
+
+# Function to calculate frame size and total MiB
+function calculate --argument WIDTH HEIGHT BPP
+	# Step 1: Calculate frame size in bytes
+	set FRAME_SIZE_BYTES (math "$WIDTH * $HEIGHT * $BPP * 2")
+
+    # Step 2: Convert frame size to MiB
+    set FRAME_SIZE_MIB (math "$FRAME_SIZE_BYTES / 1024 / 1024")
+
+    # Step 3: Determine required size in MiB
+    set REQUIRED_SIZE_MIB (math "$FRAME_SIZE_MIB + 10")
+
+    # Step 4: Calculate total MiB using 2^(log2(required size))
+    set TOTAL_MIB (math "2 ^ ceil log2($REQUIRED_SIZE_MIB)")
+
+    # Output
+    echo ""
+    echo "Frame size in bytes: $FRAME_SIZE_BYTES"
+    echo "Frame size in MiB: $FRAME_SIZE_MIB"
+    echo "Required size in MiB: $REQUIRED_SIZE_MIB"
+    echo "Total MiB: $TOTAL_MIB"
+end
+
+if set -ql _flag_help
+    echo "Calculates the size of a kvmfr device based on the passed parameters"
+    echo ""
+    echo "Usage:"
+    echo "  calculate.fish <WIDTH>x<HEIGHT>[@<BPP>]"
+    echo "  calculate.fish -w <WIDTH> -h <HEIGHT> [-b <BPP>]"
+    exit 1
+end
+
+if set -ql _flag_width && set -ql _flag_height && set -ql _flag_bpp
+	calculate $_flag_width $_flag_height $_flag_bpp
+end
+
+if set -ql _flag_width && set -ql _flag_height
+	calculate $_flag_width $_flag_height 4
+end
+
+# Validate WIDTH and HEIGHT are provided
+if test -z "$_flag_width" || test -z "$flag_height"
+	echo "Error: WIDTH and HEIGHT must be provided."
+    exit 1
+end
